@@ -7,22 +7,52 @@
 }
 
 /* サイド */
-.side-bar {
+.side_bar {
   background-color: #253141;
   width: 300px;
   height: 100vh;
 }
 
-.side-bar-header {
+.side_bar_header {
   height: 100px;
   padding: 0 20px;
+
+  background-color: #253141;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_name a{
+  font-size: 16px;
+  color: #FAFAFA;
+  text-decoration: none;
+}
+
+.create_chat a {
+  font-size: 10px;
+  color: deepskyblue;
+  border: 1px solid lightblue;
+  padding: 14px;
+  text-decoration: none;
 }
 
 .rooms {
   background-color: #2F3E51;
   height: calc(100vh - 100px);
   padding: 0 20px;
+  overflow: scroll;
 }
+
+.room {
+  padding: 20px 0 40px;
+}
+
+.room_name a {
+  color: white;
+  text-decoration: none;
+}
+
 
 
 /* メイン */
@@ -31,12 +61,12 @@
   width: calc(100vw - 300px);
 }
 
-.chat-header {
+.chat_header {
   height: 100px;
   padding: 0 40px;
 }
 
-.messages {
+.msg {
   background-color: #FAFAFA;
   height: calc(100vh - 100px - 90px);
   padding: 46px 40px 0;
