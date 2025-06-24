@@ -15,7 +15,7 @@
   </div>
 
   <div class="msgs">
-    <div class="msg">
+    <!-- <div class="msg">
       <div class="msg_name">
         <div class="msg_user">
           Tom
@@ -29,21 +29,25 @@
           おはよう
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="msg">
+    <!-- <div class="msg"> -->
+    <div th:each="message : ${messages}" class="msg">
       <div class="msg_name">
-        <div class="msg_user">
+        <!-- <div class="msg_user">
           Tom
         </div>
         <div class="msg_date">
           2020/3/31(Wed) 12:47:30
-        </div>
+        </div> -->
+        <div class="msg_user" th:text="${message.user.name}">ユーザー名</div>
+        <div class="msg_date" th:text="${message.createdAt}">日付</div>
       </div>
       <div class="msg_txt">
-        <div class="msg_text">
+        <!-- <div class="msg_text">
           こんばんは
-        </div>
+        </div> -->
+        <div class="msg_text" th:text="${message.content}">メッセージ内容</div>
       </div>
     </div>
   </div>
