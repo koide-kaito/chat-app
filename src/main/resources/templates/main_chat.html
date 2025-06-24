@@ -3,9 +3,10 @@
 <div th:fragment="main_chat">
   <div class="chat_header">
     <div class="left_header">
-      <div class="header_title">
+      <!-- <div class="header_title">
         hogefuga
-      </div>
+      </div> -->
+      <div class="header_title" th:text="${room.name}">ルーム名</div>
     </div>
     <div class="right_header">
       <div class="header_chat_end">
@@ -41,7 +42,9 @@
           2020/3/31(Wed) 12:47:30
         </div> -->
         <div class="msg_user" th:text="${message.user.name}">ユーザー名</div>
-        <div class="msg_date" th:text="${message.createdAt}">日付</div>
+        <!-- <div class="msg_date" th:text="${message.createdAt}">日付</div> -->
+        <div class="msg_date" th:text="${#dates.format(message.createdAt, 'yyyy/MM/dd HH:mm:ss')}">日付</div>
+
       </div>
       <div class="msg_txt">
         <!-- <div class="msg_text">
@@ -52,7 +55,7 @@
     </div>
   </div>
   <!-- <div class="form"> -->
-  <form th:action="@{/rooms/{roomId}/messages(roomId=${roomId})}" method="post" th:object="${messageForm}" class="form">
+  <form th:action="@{/rooms/{roomId}/messages(roomId=${room.id})}" method="post" th:object="${messageForm}" class="form">
     <div class="form_area">
       <!-- <input class="form_msg" placeholder= "type a message"> -->
       <input th:field="*{content}" class="form_msg" placeholder= "type a message">
