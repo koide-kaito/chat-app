@@ -75,14 +75,23 @@
 }
 
 .header_chat_end {
-  margin-top: 40px;
+  /* margin-top: 40px; */
+  margin-top: 20px;
 }
 
-.header_chat_end a {
+/* .header_chat_end a {
   color: darkred;
   border: 1px solid darkred;
   padding: 20px;
   text-decoration: none;
+} */
+ .header_chat_end input[type="submit"] {
+  text-decoration: none;
+  border: 1px solid darkred;
+  color: darkred;
+  background-color: #fff;
+  padding: 20px;
+  cursor: pointer;
 }
 
 .msgs {

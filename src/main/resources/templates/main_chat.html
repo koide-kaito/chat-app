@@ -3,19 +3,23 @@
 <div th:fragment="main_chat">
   <div class="chat_header">
     <div class="left_header">
-      <div class="header_title">
+      <!-- <div class="header_title">
         hogefuga
-      </div>
+      </div> -->
+      <div class="header_title" th:text="${room.name}">ルーム名</div>
     </div>
     <div class="right_header">
       <div class="header_chat_end">
-        <a href="#">チャットを終了する</a>
+        <!-- <a href="#">チャットを終了する</a> -->
+        <form th:action="@{/rooms/{roomId}/delete(roomId=${room.id})}" method="post">
+          <input type="submit" value="チャットを終了する"/>
+        </form>
       </div>
     </div>
   </div>
 
   <div class="msgs">
-    <div class="msg">
+    <!-- <div class="msg">
       <div class="msg_name">
         <div class="msg_user">
           Tom
@@ -29,33 +33,42 @@
           おはよう
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="msg">
+    <!-- <div class="msg"> -->
+    <div th:each="message : ${messages}" class="msg">
       <div class="msg_name">
-        <div class="msg_user">
+        <!-- <div class="msg_user">
           Tom
         </div>
         <div class="msg_date">
           2020/3/31(Wed) 12:47:30
-        </div>
+        </div> -->
+        <div class="msg_user" th:text="${message.user.name}">ユーザー名</div>
+        <!-- <div class="msg_date" th:text="${message.createdAt}">日付</div> -->
+        <div class="msg_date" th:text="${#dates.format(message.createdAt, 'yyyy/MM/dd HH:mm:ss')}">日付</div>
+
       </div>
       <div class="msg_txt">
-        <div class="msg_text">
+        <!-- <div class="msg_text">
           こんばんは
-        </div>
+        </div> -->
+        <div class="msg_text" th:text="${message.content}">メッセージ内容</div>
       </div>
     </div>
   </div>
-  <div class="form">
+  <!-- <div class="form"> -->
+  <form th:action="@{/rooms/{roomId}/messages(roomId=${room.id})}" method="post" th:object="${messageForm}" class="form">
     <div class="form_area">
-      <input class="form_msg" placeholder= "type a message">
+      <!-- <input class="form_msg" placeholder= "type a message"> -->
+      <input th:field="*{content}" class="form_msg" placeholder= "type a message">
       <label class="form_img">
         <span class="image-file">画像</span>
         <input type="file" class="hidden">
       </label> 
     </div>
     <input class="form_btm" type="submit" value="送信">
+   </form>
   </div>
 </div>
 </html>
